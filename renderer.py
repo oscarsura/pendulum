@@ -29,10 +29,14 @@ def loop(func):
                 done = True
         func()
         pygame.display.flip()
-        clock.tick(60)
+        clock.tick(240)
 
 def background(color):
     screen.fill(color)
+
+def shift(pair):
+    newpair = [pair[0] + x_offset, pair[1] + y_offset]
+    return newpair
 
 def translate(x, y):
     global x_offset, y_offset
@@ -49,3 +53,11 @@ def circle(x, y, radius, color, weight = 0):
     y += y_offset
     pygame.gfxdraw.aacircle(screen, x, y, radius, color)
     pygame.gfxdraw.filled_circle(screen, x, y, radius, color)
+
+def circle2(pair, radius, color, weight = 0):
+    circle(pair[0], pair[1], radius, color, weight)
+
+def line(start_pair, end_pair, color):
+    start_pair = shift(start_pair)
+    end_pair = shift(end_pair)
+    pygame.gfxdraw.line(screen, start_pair[0], start_pair[1], end_pair[0], end_pair[1], color)
