@@ -60,4 +60,4 @@ def circle2(pair, radius, color, weight = 0):
 def line(start_pair, end_pair, color):
     start_pair = shift(start_pair)
     end_pair = shift(end_pair)
-    pygame.gfxdraw.line(screen, start_pair[0], start_pair[1], end_pair[0], end_pair[1], color)
+    pygame.draw.aaline(screen, color, start_pair, end_pair, 1)

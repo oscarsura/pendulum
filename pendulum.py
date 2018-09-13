@@ -16,7 +16,7 @@ points     = [start_pair, mid_pair, end_pair]
 prev_pair  = [0, 0]
 prev_points = []
 #gravitational constant
-g = 2.5
+g = 9.81
 
 #rod length
 r1 = 192
@@ -27,7 +27,7 @@ m1 = 10
 m2 = 10
 
 #start angles
-theta1 = math.pi/2
+theta1 = 0
 theta2 = math.pi
 
 #angular velocity
@@ -39,10 +39,10 @@ acl1 = 0.0
 acl2 = 0.0
 
 #air resistance
-resistance = 0.99
+resistance = 0.50
 
 def draw():
-    renderer.background(color.WHITE)
+    renderer.background(color.BLACK)
     renderer.translate(int(width/2), int(height/2))
     calc_angles()
     calc_rods()
@@ -52,11 +52,11 @@ def draw():
 
 def draw_rod():
     for i in range(len(points)-1):
-        renderer.line(points[i], points[i+1], color.BLACK)
+        renderer.line(points[i], points[i+1], color.WHITE)
 
 def draw_mass():
-    renderer.circle2(points[1],  m1, color.BLACK)
-    renderer.circle2(points[2], m2, color.BLACK)
+    renderer.circle2(points[1],  m1, color.WHITE)
+    renderer.circle2(points[2], m2, color.WHITE)
 
 def draw_lines():
     global first
@@ -66,7 +66,7 @@ def draw_lines():
 
     prev_points.append([prev_pair, points[2]])
     for i in range(len(prev_points)):
-        renderer.line(prev_points[i][0], prev_points[i][1], color.BLACK)
+        renderer.line(prev_points[i][0], prev_points[i][1], color.WHITE)
 
 def calc_angles():
     global vel1, vel2
